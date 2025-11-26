@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    char name[51];
+    int age;
+    char grade;
+};
+
+int main() {
+    int N;
+    scanf("%d", &N);
+    getchar(); 
+    struct Student s[N];
+
+    for (int i = 0; i < N; i++) {
+        fgets(s[i].name, sizeof(s[i].name), stdin);
+        s[i].name[strcspn(s[i].name, "\n")] = '\0';
+
+        scanf("%d", &s[i].age);
+        getchar(); 
+
+        scanf("%c", &s[i].grade);
+        getchar(); 
+    }
+
+    for (int i = 0; i < N; i++) {
+        printf("Student %d:\n", i + 1);
+        printf("Name: %s\n", s[i].name);
+        printf("Age: %d\n", s[i].age);
+        printf("Grade: %c\n", s[i].grade);
+    }
+
+    return 0;
+}
